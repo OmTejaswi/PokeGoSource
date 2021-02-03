@@ -1,0 +1,48 @@
+#p5_loading {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: #fff
+  url('loader.gif')
+  no-repeat center;
+  z-index: 99999;
+}
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+
+
+canvas {
+  display: block;
+}
+
+.position a {
+  display:block;
+  color: #fff;
+  background: #00A9D4;
+  padding: 10px;
+  cursor: pointer;
+  width: 250px;
+  border-radius: 200%;
+  font-size: 15px;
+  text-align: center;
+  position: fixed;
+  left: 78%;
+  top: 93%;
+}
+
+
+.position:hover{
+  background: #00729D;
+}
+
+button  {
+  background-image: linear-gradient(to right,red,orange,yellow,green,blue);
+  width: 250px;
+  height: 40px;
+}
+
