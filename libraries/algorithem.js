@@ -55,14 +55,17 @@ function time() {
     if(timeChooser == 2) {
         setTimeout(() => {
             gameState = "levelEnd";
+            choose();
         },3600000*4);
     } else if(timeChooser == 3) {
         setTimeout(() => {
             gameState = "levelEnd";
+            choose();
         },3600000*4);
     } else if(timeChooser == 4) {
         setTimeout(() => {
             gameState = "levelEnd";
+            choose();
         },3600000*4);
     }
     //console.log(timeChooser);

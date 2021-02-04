@@ -594,7 +594,6 @@ player.velocityY = player.velocityY + 0.6;
             runningBack1.visible = true;
             resetGame.show();
 
-            choose();
 
             //console.clear();
 
