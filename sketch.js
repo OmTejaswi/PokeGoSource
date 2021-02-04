@@ -809,6 +809,7 @@ function restart() {
     enemy1Group.destroyEach();
     zubatGroup.destroyEach();
     starsGroup.destroyEach();
+    star = 3;
     gameState = "select";
 }
 
