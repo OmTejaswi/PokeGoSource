@@ -50,3 +50,49 @@ function playerAttack() {
     },500);
 }
 
+function time() {
+
+    if(timeChooser == 2) {
+        setTimeout(() => {
+            gameState = "levelEnd";
+        },3600000*4);
+    } else if(timeChooser == 3) {
+        setTimeout(() => {
+            gameState = "levelEnd";
+        },3600000*4);
+    } else if(timeChooser == 4) {
+        setTimeout(() => {
+            gameState = "levelEnd";
+        },3600000*4);
+    }
+    //console.log(timeChooser);
+}
+
+function choose() {
+    
+    if(textChooser == 1) {
+
+    }else if(textChooser == 1) {
+        win = "Hurray!"
+    } else if(textChooser == 2) {
+        win = "Booyah!"
+    } else if(textChooser == 3) {
+        win = "awesome!"
+    } else if(textChooser == 4) {
+        win = "cool!"
+    } else if(textChooser == 5) {
+        win = "wonderful!"
+    } else if(textChooser == 6) {
+        win = "Winner!"
+    } else if(textChooser == 7) {
+        win = "Super-Duper"
+    } else if(textChooser == 8) {
+        win = "Yah!"
+    } else if(textChooser == 9) {
+        win = "Wow!"
+    } else if(textChooser == 10){
+        win = "Whoa!"
+    }
+
+       
+}

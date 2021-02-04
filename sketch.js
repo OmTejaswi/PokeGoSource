@@ -9,6 +9,7 @@ var runningbacknightlight, runningbacknightdark;
 
 var zubat_flying, enemy_moving, enemy1Group, zubatGroup;
 var face_image;
+var zubat_stop;
 
 //zubat and enemy1
 var zubat, enemy1;
@@ -59,6 +60,13 @@ var jsonCoverter;
 var localScore = 0;
 
 var backgroundChanger;
+
+var backgroundReset = 0;
+
+var timeChooser = 0;
+
+var textChooser = 0;
+var win;
 
 function preload() {
 //pikachu running, standing and jumping animation
@@ -202,7 +210,8 @@ function setup() {
         console.log(serveStageSound.loop());
     }
 
-
+    timeChooser = Math.round(random(2,4));
+    textChooser = Math.round(random(1,10));
 
 }
 
@@ -269,9 +278,13 @@ function draw() {
  player.isTouching(blockGroup);
 
  //reset background
- if(runningBack1.x < 0) {
+ if(runningBack1.x < 0 && backgroundReset == 1) {
     runningBack1.x = runningBack1.width/2;
+} else if(runningBack1.x < 0 && (backgroundReset ==2 || backgroundReset ==3)) {
+    runningBack1.x = runningBack1.width/4.5;
 }
+
+//console.log(runningBack1.x)
 
 //Adding Gravity 
 player.velocityY = player.velocityY + 0.6;
@@ -313,164 +326,110 @@ player.velocityY = player.velocityY + 0.6;
         
 
        } else if(gameState === "levelPlay") {
-           //give visiblity
-           player.visible = true;
-           endlessGame.hide();;
-           levelGame.hide();
-           resetGame.hide();
-           pokeballBack.visible = false;
-           runningBack1.visible = true;
-           resetGame.visible = false;
+            //give visiblity
+            player.visible = true;
+            endlessGame.hide();;
+            levelGame.hide();
+            resetGame.hide();
+            pokeballBack.visible = false;
+            runningBack1.visible = true;
+            resetGame.visible = false;
+            
+            
+ 
+            
            
-           
-
-           
-          
-           //background velocity
-           runningBack1.velocityX = -(5 + score/100);
-
-           if(runningBack1.velocityX < -20) {
-               runningBack1.velocityX = -20;
-           }
-
-           
-
-
-           //Jump 
-           if(( touches.length>0  && player.y >= windowHeight/2+150) ||
-            ( keyDown("space") && player.y >= windowHeight/2+150)) {
-           player.velocityY = -14.5;
-           touches = []
-           } else if((touches.length>0 && player.collide(blockGroup)) || player.collide(blockGroup) && keyDown("space")   ){
+            //background velocity
+            runningBack1.velocityX = -(5 + score/100);
+ 
+            if(runningBack1.velocityX < -20) {
+                runningBack1.velocityX = -20;
+            }
+ 
+            
+ 
+ 
+            //Jump 
+            if(( touches.length>0  && player.y >= windowHeight/2+150) ||
+             ( keyDown("space") && player.y >= windowHeight/2+150)) {
             player.velocityY = -14.5;
             touches = []
-           } 
-
-           //animation
-           if(keyDown("space")) {
-               player.changeAnimation("jumping",pikachu_jumping);
-           } else if(keyWentUp("space")){
-            player.changeAnimation("running",pikachu_running);
-           }
-
-            //player velocity should no more than 0
-            if(player.velocityX < 0 || player.velocityX > 0 || player.x < windowWidth/6 ||
-                player.x > windowWidth/6) {
-               player.velocityX = 0;
-               player.x = windowWidth/6;
+            } else if((touches.length>0 && player.collide(blockGroup)) || player.collide(blockGroup) && keyDown("space")   ){
+             player.velocityY = -14.5;
+             touches = []
+            } 
+ 
+            //animation
+            if(keyDown("space")) {
+                player.changeAnimation("jumping",pikachu_jumping);
+            } else if(keyWentUp("space")){
+             player.changeAnimation("running",pikachu_running);
             }
-  
-            //star group
-            if(player.isTouching(starsGroup)) {
-                collect.play();
-                collect.setVolume(10);
-                starsGroup.destroyEach();
-                starScore+= 1;
+ 
+             //player velocity should no more than 0
+             if(player.velocityX < 0 || player.velocityX > 0 || player.x < windowWidth/6 ||
+                 player.x > windowWidth/6) {
+                player.velocityX = 0;
+                player.x = windowWidth/6;
+             }
+   
+             //star group
+             if(player.isTouching(starsGroup)) {
+                 collect.play();
+                 collect.setVolume(10);
+                 starsGroup.destroyEach();
+                 starScore+= 1;
+             }
+            //Score
+            score = score + Math.round(getFrameRate()/60);
+ 
+           
+ 
+       
+            
+            //attact
+             playerAttack(); 
+            
+ 
+            //functions
+          //Spawnning enemies and face
+          spawnEnimies();
+          spawnFace();
+ 
+          //call functions
+          blocks();
+          stars();
+ 
+ 
+            //background
+            background("#fff");
+ 
+ 
+            if(pointsGroup.isTouching(player)) {
+                points = points + 1;
+                pointsGroup.destroyEach();
             }
-           //Score
-           score = score + Math.round(getFrameRate()/60);
-
-          
-
-      
-           
-           //attact
-            playerAttack(); 
-           
-
-           //functions
-         //Spawnning enemies and face
-         spawnEnimies();
-         spawnFace();
-
-         //call functions
-         blocks();
-         stars();
-
-
-           //background
-           background("#fff");
-
-
-           if(pointsGroup.isTouching(player)) {
-               points = points + 1;
-               pointsGroup.destroyEach();
-           }
-
-           if(enemy1Group.isTouching(player)) {
-               starScore -= 1;
-               enemy1.destroy();
-           } else if(zubatGroup.isTouching(player)) {
-            starScore -= 1;
-            zubat.destroy();
-           } 
-           if(starScore> 5){
-               starScore = 5;
-
-           } else if(starScore<0) {
-               gameState = "endlessEnd";
-               starScore = 0;
-           }
-
-
-           
-
-       } else if(gameState === "endlessEnd") {
-           //give visiblity
-            endlessGame.hide();
-            levelGame.hide();;
-            runningBack1.visible = true;
-            resetGame.show();
-
-            //console.clear();
-
-           //background
-           background("#fff");
-
-           //sounds
-           battleSound.stop();
+ 
+            if(enemy1Group.isTouching(player)) {
+                starScore -= 1;
+                enemy1.destroy();
+            } else if(zubatGroup.isTouching(player)) {
+             starScore -= 1;
+             zubat.destroy();
+            } 
+            if(starScore> 5){
+                starScore = 5;
+ 
+            } else if(starScore<0) {
+                gameState = "levelEnd";
+                starScore = 0;
+            }
+ 
+            time();
+            
  
 
-           //velocity
-           runningBack1.velocityX = 0;
-
-         //group
-         blockGroup.setVelocityXEach(0);
-         enemy1Group.setVelocityXEach(0);
-         zubatGroup.setVelocityXEach(0);
-         starsGroup.setVelocityXEach(0);
-         pointsGroup.setVelocityXEach(0);
-
-         
-
-         
-
-
-         zubat.changeAnimation("stop",zubat_stop);
-           
-          //animation
-          player.changeAnimation("standing",pikachu_standing);
-
-          
-
-           //reset
-           if(keyDown(ALT) && keyDown("r") || keyDown("R")) {
-               //score
-               score = 0;
-               gameState = "endlessPlay";
-               player.changeAnimation("running",pikachu_running);
-               battleSound.loop();
-              reset();
-           }
-
-           //collide player
-        player.collide(blockGroup);
-        
-         resetGame.mousePressed(restart);
-           
-            
-
-       } else if(gameState === "endlessPlay") {
+       }  else if(gameState === "endlessPlay") {
            //give visiblity
            player.visible = true;
            endlessGame.hide();;
@@ -630,12 +589,61 @@ player.velocityY = player.velocityY + 0.6;
       
        } else if(gameState === "levelEnd") {
             //give visiblity
-            endlessGame.visible = false;
-            levelGame.visible = false;
+            endlessGame.hide();
+            levelGame.hide();;
             runningBack1.visible = true;
+            resetGame.show();
+
+            //console.clear();
+
+           //background
+           background("#fff");
+
+           //sounds
+           battleSound.stop();
+ 
+
+           //velocity
+           runningBack1.velocityX = 0;
+
+         //group
+         blockGroup.setVelocityXEach(0);
+         enemy1Group.setVelocityXEach(0);
+         zubatGroup.setVelocityXEach(0);
+         starsGroup.setVelocityXEach(0);
+         pointsGroup.setVelocityXEach(0);
+
+         
+
+         
+
+
+         zubat.changeAnimation("stop",zubat_stop);
+           
+          //animation
+          player.changeAnimation("standing",pikachu_standing);
+
+          
+
+           //reset
+           if(keyDown(ALT) && keyDown("r") || keyDown("R")) {
+               //score
+               score = 0;
+               gameState = "levelPlay";
+               player.changeAnimation("running",pikachu_running);
+               battleSound.loop();
+              reset();
+           }
+
+           //collide player
+        player.collide(blockGroup);
+        
+         resetGame.mousePressed(restart);
+           
+       
        }
 
-
+       choose();
        drawSprites();
     
     if(gameState == "select" || gameState == "endlessPlay" || gameState == "levelPlay") {
@@ -669,6 +677,16 @@ player.velocityY = player.velocityY + 0.6;
        textSize(35);
        fill("black");
        text("HI: " + highestScore, windowWidth/2-300,(windowHeight/3));
+    }
+
+    if(gameState == "levelEnd") {
+        push();
+        stroke("black");
+       textSize(35);
+       fill("black");
+       textAlign(CENTER);
+       text(win,width/2,height/3.6);
+       pop();
     }
         stroke("black");
         textSize(25);
@@ -854,18 +872,23 @@ async function timeZone() {
    // console.log(backgroundChanger);
 }
 
+
 async function backGroundtime() {
     if(backgroundChanger > 23 && backgroundChanger < 2) {
         runningBack1.changeImage("dark",runningbacknightdark);
         runningBack1.scale = 1.5;
+        backgroundReset = 3;
     } else if(backgroundChanger > 2 && backgroundChanger < 5) {
         runningBack1.changeImage("light",runningbacknightlight);
         runningBack1.scale = 1.5;
-    } else if(backgroundChanger > 5 && backgroundChanger < 18) {
+        backgroundReset = 2;
+    }  else if(backgroundChanger > 5 && backgroundChanger < 18) {
         runningBack1.changeImage("day",runningBackImg);
         runningBack1.scale = 1;
+        backgroundReset = 1;
     } else {
         runningBack1.changeImage("dark",runningbacknightlight);
         runningBack1.scale = 1.5;
+        backgroundReset = 3;
     } 
 }
