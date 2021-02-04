@@ -765,7 +765,7 @@ function spawnFace() {
 
 
 function blocks() {
-    if(frameCount%100===0) {
+    if(frameCount%5000===0) {
         block = createSprite(windowWidth+100,windowHeight/2+100,200,10);
         block.shapeColor = "black";
         block.velocityX = -15;
@@ -779,7 +779,7 @@ function blocks() {
 }
 
 function stars() {
-    if(frameCount%100===0) {
+    if(frameCount%5000===0) {
         star = createSprite(windowWidth+100,windowHeight/2+75);
         star.addImage(playingstarImg);
         star.depth = player.depth+1;
