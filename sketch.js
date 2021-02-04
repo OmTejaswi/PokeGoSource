@@ -171,7 +171,7 @@ function setup() {
     slider.position(windowWidth/10, windowHeight/1.06);
 
     //alert for high volume
-    //alert("Please Unplug Headsets and Make sure your volume is loo. Too high volume can harm you ears")
+    alert("Please Unplug Headsets and Make sure your volume is loo. Too high volume can harm you ears")
 
     //change depth
 
@@ -594,6 +594,8 @@ player.velocityY = player.velocityY + 0.6;
             runningBack1.visible = true;
             resetGame.show();
 
+            choose();
+
             //console.clear();
 
            //background
@@ -643,7 +645,6 @@ player.velocityY = player.velocityY + 0.6;
        
        }
 
-       choose();
        drawSprites();
     
     if(gameState == "select" || gameState == "endlessPlay" || gameState == "levelPlay") {
