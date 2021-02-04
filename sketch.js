@@ -210,7 +210,7 @@ function setup() {
         console.log(serveStageSound.loop());
     }
 
-    timeChooser = Math.round(random(2,4));
+    timeChooser = Math.round(random(1,2));
     textChooser = Math.round(random(1,10));
 
 }
@@ -693,7 +693,7 @@ player.velocityY = player.velocityY + 0.6;
         fill("black");
         text(starScore, showingStar.x-4, showingStar.y+14);
 
-       text("© Dynnamic Coders",windowWidth/2.5,(windowHeight));
+       text("© Dynamic Coders",windowWidth/2.5,(windowHeight));
        
        
        
