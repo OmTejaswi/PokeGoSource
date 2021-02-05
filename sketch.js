@@ -243,6 +243,8 @@ function draw() {
             //score
             score = 0;
             points = 0;
+            starScore = 3;
+            serveStageSound.loop();
             gameState = "select";
             reset();
         }
@@ -809,7 +811,7 @@ function restart() {
     enemy1Group.destroyEach();
     zubatGroup.destroyEach();
     starsGroup.destroyEach();
-    star = 3;
+    starScore = 3;
     gameState = "select";
 }
 
