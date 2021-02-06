@@ -178,7 +178,7 @@ function setup() {
     //change depth
 
     //starScore
-    showingStar = createSprite(windowWidth-450,(windowHeight/15.5));
+    showingStar = createSprite(windowWidth/1.7,(windowHeight/15.5));
     showingStar.addImage(showingstarImg);
     showingStar.scale = 0.2;
 
@@ -650,7 +650,9 @@ player.velocityY = player.velocityY + 0.6;
 
        drawSprites();
     
+    
     if(gameState == "select" || gameState == "endlessPlay" || gameState == "levelPlay") {
+       textAlign(CENTER);
        stroke("red");
        textSize(25);
        fill("yellow");
@@ -664,7 +666,7 @@ player.velocityY = player.velocityY + 0.6;
        stroke("white");
        textSize(25);
        fill("black");
-       text("HI: " + highestScore, windowWidth-400,(windowHeight/10.5));
+       text("HI: " + highestScore, windowWidth-440,(windowHeight/10.5));
 
     } else {
        stroke("red");
@@ -695,9 +697,9 @@ player.velocityY = player.velocityY + 0.6;
         stroke("black");
         textSize(25);
         fill("black");
-        text(starScore, showingStar.x-4, showingStar.y+14);
+        text(starScore, showingStar.x+2, showingStar.y+14);
 
-       text("© Dynamic Coders",windowWidth/2.5,(windowHeight));
+       text("© Dynamic Coders",windowWidth/2,(windowHeight));
        
        
        
