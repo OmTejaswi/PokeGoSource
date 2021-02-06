@@ -68,6 +68,8 @@ var timeChooser = 0;
 var textChooser = 0;
 var win;
 
+var alertBox;
+
 function preload() {
 //pikachu running, standing and jumping animation
  pikachu_running = loadAnimation("images/pikachu1.png","images/pikachu2.png", "images/pikachu3.png",
@@ -171,7 +173,7 @@ function setup() {
     slider.position(windowWidth/10, windowHeight/1.06);
 
     //alert for high volume
-    alert("Please Unplug Headsets and Make sure your volume is loo. Too high volume can harm you ears")
+    alertBox = alert("Please Unplug Headsets and Make sure your volume is loo. Too high volume can harm you ears")
 
     //change depth
 
@@ -194,7 +196,7 @@ function setup() {
     score = 0;
     points = 0; 
 
-    if(gameState === "select" ) {
+    if(alertBox) {
         serveStageSound.loop();
        
     }
