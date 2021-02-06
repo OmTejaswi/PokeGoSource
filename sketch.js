@@ -815,6 +815,7 @@ function restart() {
     starsGroup.destroyEach();
     starScore = 3;
     gameState = "select";
+    serveStageSound.loop();
 }
 
 
