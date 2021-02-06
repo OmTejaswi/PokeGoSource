@@ -578,6 +578,7 @@ player.velocityY = player.velocityY + 0.6;
            if(keyDown(ALT) && keyDown("r") || keyDown("R")) {
                //score
                score = 0;
+               starScore = 1;
                gameState = "endlessPlay";
                player.changeAnimation("running",pikachu_running);
                battleSound.loop();
@@ -634,6 +635,7 @@ player.velocityY = player.velocityY + 0.6;
            if(keyDown(ALT) && keyDown("r") || keyDown("R")) {
                //score
                score = 0;
+               starScore = 1;
                gameState = "levelPlay";
                player.changeAnimation("running",pikachu_running);
                battleSound.loop();
