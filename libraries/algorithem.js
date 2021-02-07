@@ -1,9 +1,12 @@
 
 function playerAttackTimer() {
-        for(var i = 0; i<enemy1Group.length; i++) {
+        for(var i = 0; i<enemy1Group.length; i++) 
+        {
             if((enemy1Group.get(i).x < player.x+400 && enemy1Group.get(i).x > player.x-100) && (keyDown("a") ||
-            keyDown("A"))) {
-                if(frameCount%10===0) {
+            keyDown("A"))) 
+            {
+                if(frameCount%10===0) 
+                {
                     //attack
                     attack = createSprite(player.x,player.y);
                     attack.addImage(attackImg);
@@ -16,10 +19,13 @@ function playerAttackTimer() {
             }
         }
 
-        for(var i = 0; i<zubatGroup.length; i++) {
+        for(var i = 0; i<zubatGroup.length; i++) 
+        {
             if((zubatGroup.get(i).x < player.x+400 && zubatGroup.get(i).x > player.x-100) && (keyDown("a") ||
-            keyDown("A"))) {
-                if(frameCount%10===0) {
+            keyDown("A"))) 
+            {
+                if(frameCount%10===0) 
+                {
                     //attack
                     attack = createSprite(player.x,player.y);
                     attack.addImage(attackImg);
@@ -32,10 +38,13 @@ function playerAttackTimer() {
             }
         }
 
-        if(enemy1Group.isTouching(attackGroup)) {
+        if(enemy1Group.isTouching(attackGroup)) 
+        {
             attackGroup.destroyEach();
             enemy1Group.destroyEach();
-        } else if(zubatGroup.isTouching(attackGroup)) {
+        }
+         else if(zubatGroup.isTouching(attackGroup)) 
+         {
             attackGroup.destroyEach();
             zubatGroup.destroyEach();
         }
@@ -52,12 +61,15 @@ function playerAttack() {
 
 function time() {
 
-    if(timeChooser == 1) {
+    if(timeChooser == 1) 
+    {
         setTimeout(() => {
             gameState = "levelEnd";
             choose();
         },3600000*1);
-    } else if(timeChooser == 2) {
+    }
+     else if(timeChooser == 2) 
+     {
         setTimeout(() => {
             gameState = "levelEnd";
             choose();
@@ -68,27 +80,44 @@ function time() {
 
 function choose() {
     
-    if(textChooser == 1) {
-
-    }else if(textChooser == 1) {
+    if(textChooser == 1) 
+    {
         win = "Hurray!"
-    } else if(textChooser == 2) {
+    } 
+    else if(textChooser == 2) 
+    {
         win = "Booyah!"
-    } else if(textChooser == 3) {
+    }
+     else if(textChooser == 3) 
+     {
         win = "awesome!"
-    } else if(textChooser == 4) {
+    }
+     else if(textChooser == 4) 
+     {
         win = "cool!"
-    } else if(textChooser == 5) {
+     } 
+     else if(textChooser == 5) 
+     {
         win = "wonderful!"
-    } else if(textChooser == 6) {
+    }
+     else if(textChooser == 6) 
+     {
         win = "Winner!"
-    } else if(textChooser == 7) {
+    }
+     else if(textChooser == 7) 
+     {
         win = "Super-Duper"
-    } else if(textChooser == 8) {
+    }
+     else if(textChooser == 8) 
+     {
         win = "Yah!"
-    } else if(textChooser == 9) {
+    }
+     else if(textChooser == 9) 
+     {
         win = "Wow!"
-    } else if(textChooser == 10){
+    }
+     else if(textChooser == 10)
+     {
         win = "Whoa!"
     }
 

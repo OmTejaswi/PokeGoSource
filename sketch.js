@@ -196,21 +196,22 @@ function setup() {
     score = 0;
     points = 0; 
 
-    if(alertBox) {
+    if(alertBox) 
+    {
         serveStageSound.loop();
-       
     }
-    if(gameState === "endlessPlay" || gameState === "levelPlay") {
+    if(gameState === "endlessPlay" || gameState === "levelPlay")
+       {
         battleSound.loop();
-       
-    }
+       }
 
     serveStageSound.setVolume(1);
     battleSound.setVolume(1);
 
-    if(gameState === "select") {
+    if(gameState === "select")
+     {
         console.log(serveStageSound.loop());
-    }
+     }
 
     timeChooser = Math.round(random(1,2));
     textChooser = Math.round(random(1,10));
@@ -224,11 +225,13 @@ function draw() {
     localScore = localStorage.getItem("score");
 
      //score
-     if(score > hiddenScore) {
+     if(score > hiddenScore)
+      {
         hiddenScore+= Math.round(getFrameRate()/60);
-       }
+      }
 
-    if(localStorage.getItem("score") <= hiddenScore) {
+    if(localStorage.getItem("score") <= hiddenScore) 
+    {
        localStorage.setItem("score", hiddenScore);
     } 
 
@@ -241,7 +244,8 @@ function draw() {
  
            //reset
            if((keyDown(CONTROL) && keyDown(SHIFT) && keyDown(ENTER)) && (gameState == "endlessPlay" 
-           || gameState == "levelPlay")) {
+           || gameState == "levelPlay")) 
+           {
             //score
             score = 0;
             points = 0;
@@ -249,7 +253,7 @@ function draw() {
             serveStageSound.loop();
             gameState = "select";
             reset();
-        }
+           }
 
         zubatGroup.collide(blockGroup);
         pointsGroup.collide(blockGroup);
@@ -263,9 +267,9 @@ function draw() {
     
 
     //full screen
-    if(keyCode == 70) {
-        document.documentElement.requestFullscreen();
-        
+    if(keyCode == 70) 
+    {
+        document.documentElement.requestFullscreen();    
     }
     
      //background
@@ -282,11 +286,13 @@ function draw() {
  player.isTouching(blockGroup);
 
  //reset background
- if(runningBack1.x < 0 && backgroundReset == 1) {
+ if(runningBack1.x < 0 && backgroundReset == 1) 
+ {
     runningBack1.x = runningBack1.width/2;
-} else if(runningBack1.x < 0 && (backgroundReset ==2 || backgroundReset ==3)) {
+ } else if(runningBack1.x < 0 && (backgroundReset ==2 || backgroundReset ==3)) 
+ {
     runningBack1.x = runningBack1.width/4.5;
-}
+ }
 
 //console.log(runningBack1.x)
 
@@ -297,7 +303,8 @@ player.velocityY = player.velocityY + 0.6;
 
 
   //serve stage
-   if(gameState === "select") {
+   if(gameState === "select") 
+   {
        //give visiblity
        player.visible = false;
        //zubat.visible = false;
@@ -329,7 +336,8 @@ player.velocityY = player.velocityY + 0.6;
             
         
 
-       } else if(gameState === "levelPlay") {
+       } else if(gameState === "levelPlay") 
+       {
             //give visiblity
             player.visible = true;
             endlessGame.hide();;
@@ -346,7 +354,8 @@ player.velocityY = player.velocityY + 0.6;
             //background velocity
             runningBack1.velocityX = -(5 + score/100);
  
-            if(runningBack1.velocityX < -20) {
+            if(runningBack1.velocityX < -20) 
+            {
                 runningBack1.velocityX = -20;
             }
  
@@ -355,30 +364,36 @@ player.velocityY = player.velocityY + 0.6;
  
             //Jump 
             if(( touches.length>0  && player.y >= windowHeight/2+150) ||
-             ( keyDown("space") && player.y >= windowHeight/2+150)) {
+             ( keyDown("space") && player.y >= windowHeight/2+150)) 
+             {
             player.velocityY = -14.5;
             touches = []
-            } else if((touches.length>0 && player.collide(blockGroup)) || player.collide(blockGroup) && keyDown("space")   ){
+            } else if((touches.length>0 && player.collide(blockGroup)) || player.collide(blockGroup) && keyDown("space")   )
+            {
              player.velocityY = -14.5;
              touches = []
             } 
  
             //animation
-            if(keyDown("space")) {
+            if(keyDown("space")) 
+            {
                 player.changeAnimation("jumping",pikachu_jumping);
-            } else if(keyWentUp("space")){
+            } else if(keyWentUp("space"))
+            {
              player.changeAnimation("running",pikachu_running);
             }
  
              //player velocity should no more than 0
              if(player.velocityX < 0 || player.velocityX > 0 || player.x < windowWidth/6 ||
-                 player.x > windowWidth/6) {
+                 player.x > windowWidth/6) 
+                 {
                 player.velocityX = 0;
                 player.x = windowWidth/6;
-             }
+                 }
    
              //star group
-             if(player.isTouching(starsGroup)) {
+             if(player.isTouching(starsGroup)) 
+             {
                  collect.play();
                  collect.setVolume(10);
                  starsGroup.destroyEach();
@@ -409,22 +424,26 @@ player.velocityY = player.velocityY + 0.6;
             background("#fff");
  
  
-            if(pointsGroup.isTouching(player)) {
+            if(pointsGroup.isTouching(player)) 
+            {
                 points = points + 1;
                 pointsGroup.destroyEach();
             }
  
-            if(enemy1Group.isTouching(player)) {
+            if(enemy1Group.isTouching(player)) 
+            {
                 starScore -= 1;
                 enemy1.destroy();
-            } else if(zubatGroup.isTouching(player)) {
+            } else if(zubatGroup.isTouching(player)) 
+            {
              starScore -= 1;
              zubat.destroy();
             } 
-            if(starScore> 5){
+            if(starScore> 5)
+            {
                 starScore = 5;
- 
-            } else if(starScore<0) {
+            } else if(starScore<0) 
+            {
                 gameState = "levelEnd";
                 starScore = 0;
             }
@@ -433,7 +452,9 @@ player.velocityY = player.velocityY + 0.6;
             
  
 
-       }  else if(gameState === "endlessPlay") {
+       }  
+       else if(gameState === "endlessPlay") 
+       {
            //give visiblity
            player.visible = true;
            endlessGame.hide();;
@@ -450,7 +471,8 @@ player.velocityY = player.velocityY + 0.6;
            //background velocity
            runningBack1.velocityX = -(5 + score/100);
 
-           if(runningBack1.velocityX < -20) {
+           if(runningBack1.velocityX < -20) 
+           {
                runningBack1.velocityX = -20;
            }
 
@@ -459,30 +481,36 @@ player.velocityY = player.velocityY + 0.6;
 
            //Jump 
            if(( touches.length>0  && player.y >= windowHeight/2+150) ||
-            ( keyDown("space") && player.y >= windowHeight/2+150)) {
+            ( keyDown("space") && player.y >= windowHeight/2+150)) 
+            {
            player.velocityY = -14.5;
            touches = []
-           } else if((touches.length>0 && player.collide(blockGroup)) || player.collide(blockGroup) && keyDown("space")   ){
+            } else if((touches.length>0 && player.collide(blockGroup)) || player.collide(blockGroup) && keyDown("space"))
+            {
             player.velocityY = -14.5;
             touches = []
-           } 
+            } 
 
            //animation
-           if(keyDown("space")) {
+           if(keyDown("space")) 
+           {
                player.changeAnimation("jumping",pikachu_jumping);
-           } else if(keyWentUp("space")){
+            } else if(keyWentUp("space"))
+            {
             player.changeAnimation("running",pikachu_running);
-           }
+            }
 
             //player velocity should no more than 0
             if(player.velocityX < 0 || player.velocityX > 0 || player.x < windowWidth/6 ||
-                player.x > windowWidth/6) {
-               player.velocityX = 0;
-               player.x = windowWidth/6;
-            }
+                player.x > windowWidth/6) 
+                {
+                    player.velocityX = 0;
+                    player.x = windowWidth/6;
+                }
   
             //star group
-            if(player.isTouching(starsGroup)) {
+            if(player.isTouching(starsGroup)) 
+            {
                 collect.play();
                 collect.setVolume(10);
                 starsGroup.destroyEach();
@@ -513,30 +541,38 @@ player.velocityY = player.velocityY + 0.6;
            background("#fff");
 
 
-           if(pointsGroup.isTouching(player)) {
+           if(pointsGroup.isTouching(player)) 
+           {
                points = points + 1;
                pointsGroup.destroyEach();
            }
 
-           if(enemy1Group.isTouching(player)) {
+           if(enemy1Group.isTouching(player)) 
+           {
                starScore -= 1;
                enemy1.destroy();
-           } else if(zubatGroup.isTouching(player)) {
+           }
+            else if(zubatGroup.isTouching(player)) 
+            {
             starScore -= 1;
             zubat.destroy();
            } 
-           if(starScore> 5){
+           if(starScore> 5)
+           {
                starScore = 5;
 
-           } else if(starScore<0) {
+            } else if(starScore<0) 
+            {
                gameState = "endlessEnd";
                starScore = 0;
-           }
+            }
 
 
            
 
-       } else if(gameState === "endlessEnd") {
+       }
+        else if(gameState === "endlessEnd") 
+        {
            //give visiblity
             endlessGame.hide();
             levelGame.hide();;
@@ -575,7 +611,8 @@ player.velocityY = player.velocityY + 0.6;
           
 
            //reset
-           if(keyDown(ALT) && keyDown("r") || keyDown("R")) {
+           if(keyDown(ALT) && keyDown("r") || keyDown("R")) 
+           {
                //score
                score = 0;
                starScore = 1;
@@ -592,7 +629,9 @@ player.velocityY = player.velocityY + 0.6;
            
        
       
-       } else if(gameState === "levelEnd") {
+       } 
+       else if(gameState === "levelEnd") 
+       {
             //give visiblity
             endlessGame.hide();
             levelGame.hide();;
@@ -632,7 +671,8 @@ player.velocityY = player.velocityY + 0.6;
           
 
            //reset
-           if(keyDown(ALT) && keyDown("r") || keyDown("R")) {
+           if(keyDown(ALT) && keyDown("r") || keyDown("R")) 
+           {
                //score
                score = 0;
                starScore = 1;
@@ -653,7 +693,8 @@ player.velocityY = player.velocityY + 0.6;
        drawSprites();
     
     
-    if(gameState == "select" || gameState == "endlessPlay" || gameState == "levelPlay") {
+    if(gameState == "select" || gameState == "endlessPlay" || gameState == "levelPlay") 
+    {
        textAlign(CENTER);
        stroke("red");
        textSize(25);
@@ -670,7 +711,9 @@ player.velocityY = player.velocityY + 0.6;
        fill("black");
        text("HI: " + highestScore, windowWidth-440,(windowHeight/10.5));
 
-    } else {
+    } 
+    else 
+    {
        stroke("red");
        textSize(35);
        fill("yellow");
@@ -687,7 +730,8 @@ player.velocityY = player.velocityY + 0.6;
        text("HI: " + highestScore, windowWidth/2-300,(windowHeight/3));
     }
 
-    if(gameState == "levelEnd") {
+    if(gameState == "levelEnd") 
+    {
         push();
         stroke("black");
        textSize(35);
@@ -712,7 +756,8 @@ player.velocityY = player.velocityY + 0.6;
 
  function spawnEnimies() {
 
-    if(frameCount % 300 === 0) {
+    if(frameCount % 300 === 0) 
+    {
         zubat = createSprite(windowWidth+100, windowHeight/2+50);
         zubat.y = Math.round(random(350, 550));
         zubat.addAnimation("flying", zubat_flying);
@@ -730,7 +775,8 @@ player.velocityY = player.velocityY + 0.6;
 
     }
 
-    if(frameCount % 225 === 0) {
+    if(frameCount % 225 === 0) 
+    {
         enemy1 = createSprite(windowWidth+100,invisibleGround.y-30);
         enemy1.addImage("moving", enemy_moving);
         enemy1.scale = 0.80;
@@ -740,7 +786,8 @@ player.velocityY = player.velocityY + 0.6;
         enemy1.debug = false;
         enemy1Group.add(enemy1);
 
-        if(enemy1.velocityX > 20) {
+        if(enemy1.velocityX > 20) 
+        {
             enemy1.velocityX = 20;
         }
 
@@ -755,7 +802,8 @@ player.velocityY = player.velocityY + 0.6;
 
 function spawnFace() {
 
-    if(frameCount % 500 === 0) {
+    if(frameCount % 500 === 0) 
+    {
         var face = createSprite(windowWidth+100, windowHeight/2+50);
         face.y = Math.round(random(350, 550));
         face.addImage(face_image);
@@ -774,7 +822,8 @@ function spawnFace() {
 
 
 function blocks() {
-    if(frameCount%5000===0) {
+    if(frameCount%5000===0) 
+    {
         block = createSprite(windowWidth+100,windowHeight/2+100,200,10);
         block.shapeColor = "black";
         block.velocityX = -15;
@@ -788,7 +837,8 @@ function blocks() {
 }
 
 function stars() {
-    if(frameCount%5000===0) {
+    if(frameCount%5000===0) 
+    {
         star = createSprite(windowWidth+100,windowHeight/2+75);
         star.addImage(playingstarImg);
         star.depth = player.depth+1;
@@ -802,7 +852,8 @@ function stars() {
     }
 }
 
-function reset() {
+function reset() 
+{
     pointsGroup.destroyEach();
     blockGroup.destroyEach();
     starsGroup.destroyEach();
@@ -811,7 +862,8 @@ function reset() {
     starsGroup.destroyEach();
 }
 
-function restart() {
+function restart() 
+{
     pointsGroup.destroyEach();
     blockGroup.destroyEach();
     starsGroup.destroyEach();
@@ -835,7 +887,8 @@ function endlessplay() {
            selectSound.setVolume(2);
 
            confirmBox = confirm("Are you sure to start the Endless game? Make sure you are in good environment to start Endless Game");
-           if(confirmBox == true) {
+           if(confirmBox == true) 
+           {
                gameState = "endlessPlay";
               
                //sound
@@ -843,7 +896,9 @@ function endlessplay() {
                battleSound.loop();
                
                return true;
-           } else {
+           } 
+           else 
+           {
                window.location.reload();
                return false;
            }
@@ -859,7 +914,8 @@ function levelplay() {
             selectSound.setVolume(2);
            
             confirmBox = confirm("Are you sure to start the level game? Make sure you are in good environment to start Level Game");
-            if(confirmBox == true) {
+            if(confirmBox == true) 
+            {
                 gameState = "levelPlay";
                  //sound
                  serveStageSound.stop();
@@ -867,7 +923,9 @@ function levelplay() {
                  battleSound.loop();
 
                 return true;
-            } else {
+            }
+             else 
+             {
                 window.location.reload();
                 return false;
             }
@@ -885,19 +943,26 @@ async function timeZone() {
 
 
 async function backGroundtime() {
-    if(backgroundChanger > 23 && backgroundChanger < 2) {
+    if(backgroundChanger > 23 && backgroundChanger < 2) 
+    {
         runningBack1.changeImage("dark",runningbacknightdark);
         runningBack1.scale = 1.5;
         backgroundReset = 3;
-    } else if(backgroundChanger > 2 && backgroundChanger < 5) {
+    }
+     else if(backgroundChanger > 2 && backgroundChanger < 5) 
+     {
         runningBack1.changeImage("light",runningbacknightlight);
         runningBack1.scale = 1.5;
         backgroundReset = 2;
-    }  else if(backgroundChanger > 5 && backgroundChanger < 18) {
+     } 
+     else if(backgroundChanger > 5 && backgroundChanger < 18) 
+     {
         runningBack1.changeImage("day",runningBackImg);
         runningBack1.scale = 1;
         backgroundReset = 1;
-    } else {
+     } 
+     else 
+     {
         runningBack1.changeImage("dark",runningbacknightlight);
         runningBack1.scale = 1.5;
         backgroundReset = 3;
