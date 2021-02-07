@@ -701,6 +701,7 @@ player.velocityY = player.velocityY + 0.6;
         fill("black");
         text(starScore, showingStar.x+2, showingStar.y+14);
 
+       textAlign(CENTER);
        text("© Dynamic Coders",windowWidth/2,(windowHeight));
        
        
