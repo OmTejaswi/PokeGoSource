@@ -740,6 +740,7 @@ player.velocityY = player.velocityY + 0.6;
        text(win,width/2,height/3.6);
        pop();
     }
+        textAlign(CENTER);
         stroke("black");
         textSize(25);
         fill("black");
