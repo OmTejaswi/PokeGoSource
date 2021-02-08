@@ -56,7 +56,7 @@ function playerAttackTimer() {
 function playerAttack() {
     setTimeout(()=>{
         playerAttackTimer();
-    },500);
+    },120000);
 }
 
 function time() {
