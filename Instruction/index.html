@@ -1,37 +1,31 @@
 <!DOCTYPE html><html lang="en-in"><head>
     <title>PokéGo</title>
-    <link rel="stylesheet" type="text/css" href="style.css" defer>
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.png"/>
-    <script src="libraries/p5.js" defer></script>
-    <script src="libraries/p5.dom.min.js" defer></script>
-    <script src="libraries/p5.sound.min.js" defer></script>
-    <script src="libraries/p5.play.js" defer></script>
-    <script src="libraries/p5.sound.js" defer></script>
-    <script src="libraries/algorithem.js" defer></script>
-    <script src="sketch.js" defer></script>
-    <meta charset="utf-8">
+    <meta property="og:title" content="PokeGo Game" />
+<meta property="og:description" content="PokeGo Game is © copyrigth of Dynnamic Coders Team. Read the instructions and start playing game. Hope you will
+ enjoy! Best Of Luck" />
+<meta property="og:url" content="https://pokego.ml" />
+<meta property="og:image" content="https://raw.githubusercontent.com/OmTejaswi/PokeGoSource/master/pokego.jpeg" />
+<link rel="stylesheet" type="text/css" href="./style.css" defer>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.png"/>
 
   </head>
 
-  <body onload>
+  <body>
+      <div id="pdf">
+        <iframe src="./Instruction.pdf"  width="476" height="600" align="right" style="top: auto;"></iframe>
+      </div>
 
-        <div id="p5_loading"> </div>
+
+      <div class="iframe-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/8NBcV9ckssw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      
     
-        <div class="position">
-            <a  style="text-decoration:none" href="Instruction/" target="_pokego">INSTRUCTION</a>
-            </div>
- 
-         
- </body>
+
+</body>
 
   <script>
-      
-               // var preloader = document.getElementById('loading');
 
-                // function myFunction() {
-                //     preloader.style.display = 'none';
-                // }
-            
 
 
         document.onkeydown=function(e){
@@ -41,9 +35,9 @@
                 if(e.ctrlKey && e.shiftKey && e.keyCode == "I".charCodeAt(0)) {
                     return false;
                 }
-            //   if(e.ctrlKey && e.shiftKey && e.keyCode == "J".charCodeAt(0)) {
-        //          return false;
-        //       } 
+               if(e.ctrlKey && e.shiftKey && e.keyCode == "J".charCodeAt(0)) {
+                 return false;
+                } 
                 if(e.ctrlKey && e.keyCode == "U".charCodeAt(0)) {
                     return false;
                 }
@@ -72,16 +66,11 @@
             disableRight.preventDefault();
         });
 
-    /*     window.addEventListener("beforeunload", ()=>{
+         window.addEventListener("beforeunload", ()=>{
         event.preventDefault();
         event.returnValue = "";
     })
         
-
-    
-    $(window).on( 'beforeunload.edit-post', function() {
-    return true;
-    }) */
         </script>
 
 
