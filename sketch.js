@@ -1,74 +1,73 @@
 //player
-var player;
+let player;
 
 //pokemon and backGround
-var pikachu_running, pikachu_jumping, pikachu_standing;
-var runningBack1, gymBack, natureBack, pokeballBack, invisibleGround;
-var runningBackImg, gymBackImg, natureBackImg, pokeballBackImg;
-var runningbacknightlight, runningbacknightdark;
+let pikachu_running, pikachu_jumping, pikachu_standing;
+let runningBack1, gymBack, natureBack, pokeballBack, invisibleGround;
+let runningBackImg, gymBackImg, natureBackImg, pokeballBackImg;
+let runningbacknightlight, runningbacknightdark;
 
-var zubat_flying, enemy_moving, enemy1Group, zubatGroup;
-var face_image;
-var zubat_stop;
+let zubat_flying, enemy_moving, enemy1Group, zubatGroup;
+let face_image;
+let zubat_stop;
 
 //zubat and enemy1
-var zubat, enemy1;
+let zubat, enemy1;
 
 //endless and level game
-var endlessGame, endlessgameImg;
-var levelGame, levelgameImg;
+let endlessGame, endlessgameImg;
+let levelGame, levelgameImg;
 
 //sounds
-var battleSound;
-var selectSound;
-var serveStageSound;
-var pikaTired, pikaHappy, pikachuSound, pikaa, collect, attack;
+let battleSound;
+let selectSound;
+let serveStageSound;
+let pikaTired, pikaHappy, pikachuSound, pikaa, collect, attackSound;
 
 //gameState
-var gameState = "select";
+let gameState = "select";
 
 //confirmBox
-var confirmBox;
-var alert;
+let confirmBox;
 
 //sound slider
-var slider;
+let slider;
 
 //block
-var block
+let block
 
 //star
-var star, showingStar, playingstarImg, showingstarImg;
+let star, showingStar, playingstarImg, showingstarImg;
 
 //score
-var score, points;
- var highestScore = 0;
- var starScore = 3;
- var hiddenScore = 0;
+let score, points;
+ let highestScore = 0;
+ let starScore = 3;
+ let hiddenScore = 0;
 
-var resetGame, resetGameImg;
+let resetGame, resetGameImg;
 
 //attact
-var attack, attackImg;
+let attack, attackImg;
 
 //time
-var take = "00:00";
-var date;
-var datetime;
-var timeData;
-var jsonCoverter;
-var localScore = 0;
+let take = "00:00";
+let date;
+let datetime;
+let timeData;
+let jsonCoverter;
+let localScore = 0;
 
-var backgroundChanger;
+let backgroundChanger;
 
-var backgroundReset = 0;
+let backgroundReset = 0;
 
-var timeChooser = 0;
+let timeChooser = 0;
 
-var textChooser = 0;
-var win;
+let textChooser = 0;
+let win;
 
-var alertBox;
+let alertBox;
 
 function preload() {
 //pikachu running, standing and jumping animation
@@ -114,7 +113,7 @@ function preload() {
  pikachuSound = loadSound("sound/PikachuSoundEffect.mp3");
  pikaa = loadSound("sound/Pikaaaa.mp3");
  collect = loadSound("sound/collect.mp3");
- attack = loadSound("sound/Attack.mp3");
+ attackSound = loadSound("sound/Attack.mp3");
 
  //reset
  resetGameImg = loadImage("images/restart.png");
@@ -805,7 +804,7 @@ function spawnFace() {
 
     if(frameCount % 500 === 0) 
     {
-        var face = createSprite(windowWidth+100, windowHeight/2+50);
+        let face = createSprite(windowWidth+100, windowHeight/2+50);
         face.y = Math.round(random(350, 550));
         face.addImage(face_image);
         face.scale = 0.1;

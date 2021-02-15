@@ -1,6 +1,6 @@
 
 function playerAttackTimer() {
-        for(var i = 0; i<enemy1Group.length; i++) 
+        for(let i = 0; i<enemy1Group.length; i++) 
         {
             if((enemy1Group.get(i).x < player.x+400 && enemy1Group.get(i).x > player.x-100) && (keyDown("a") ||
             keyDown("A"))) 
@@ -19,7 +19,7 @@ function playerAttackTimer() {
             }
         }
 
-        for(var i = 0; i<zubatGroup.length; i++) 
+        for(let i = 0; i<zubatGroup.length; i++) 
         {
             if((zubatGroup.get(i).x < player.x+400 && zubatGroup.get(i).x > player.x-100) && (keyDown("a") ||
             keyDown("A"))) 
