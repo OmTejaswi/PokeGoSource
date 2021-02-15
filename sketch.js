@@ -19,7 +19,7 @@ let endlessGame, endlessgameImg;
 let levelGame, levelgameImg;
 
 //sounds
-var battleSound;
+let battleSound;
 let selectSound;
 let serveStageSound;
 let pikaTired, pikaHappy, pikachuSound, pikaa, collect, attackSound;
