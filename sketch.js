@@ -1,3 +1,10 @@
+/*  Note PokeGo Game is the copy
+    right of © Dynamic Coders
+    please don't copy the codes
+
+    © Dynamic Coders All rights reserved */
+
+
 //player
 let player;
 
