@@ -605,7 +605,8 @@ player.velocityY = player.velocityY + 0.6;
          pointsGroup.setVelocityXEach(0);
 
          
-
+         zubatGroup.setLifetimeEach(-1);
+         enemy1Group.setLifetimeEach(-1);
          
 
 
@@ -665,8 +666,8 @@ player.velocityY = player.velocityY + 0.6;
          pointsGroup.setVelocityXEach(0);
 
          
-
-         
+        zubatGroup.setLifetimeEach(-1);
+        enemy1Group.setLifetimeEach(-1);
 
 
          zubat.changeAnimation("stop",zubat_stop);
