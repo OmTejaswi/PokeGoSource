@@ -175,7 +175,7 @@ function setup() {
     levelGame = createButton("LEVELGAME");
     levelGame.position(width/2.5,height/2);
 
-    checkBox = createCheckbox("Set Background According To Time",false).position(width/1.3,height/30);
+    checkBox = createCheckbox("Set Background According To Time",true).position(width/1.3,height/30);
     
 
     //create slider
