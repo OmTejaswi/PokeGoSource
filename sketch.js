@@ -137,17 +137,17 @@ function setup() {
 
      //create sprite in setup
      //background
-    pokeballBack = createSprite(windowWidth/2,windowHeight/2);
+    pokeballBack = createSprite(width/2,height/2);
     pokeballBack.addImage(pokeballBackImg);
 
-    runningBack1 = createSprite(windowWidth/2,windowHeight/2);
+    runningBack1 = createSprite(width/2,height/2);
     runningBack1.addImage("day",runningBackImg);
     runningBack1.velocityX = -5;
     runningBack1.addImage("light",runningbacknightlight);
     runningBack1.addImage("dark",runningbacknightdark);
 
 
-    player = createSprite((windowWidth/6),runningBack1.y+170);
+    player = createSprite((width/6),runningBack1.y+170);
     player.addAnimation("running", pikachu_running);
     player.scale = 0.2;
     player.addAnimation("standing",pikachu_standing);
@@ -159,7 +159,7 @@ function setup() {
 
     //reset the game
     resetGame = createButton("RESTART");
-    resetGame.position(windowWidth/2.35,windowHeight/2.5);
+    resetGame.position(width/2.35,height/2.5);
     resetGame.style("borderRadius","100px");
     resetGame.size(150,150);
     resetGame.hide();
@@ -167,16 +167,16 @@ function setup() {
 
     // endless and level
     endlessGame = createButton("ENDLESSGAME");
-    endlessGame.position(windowWidth/2.5,windowHeight/2.8);
+    endlessGame.position(width/2.5,height/2.8);
     
 
     levelGame = createButton("LEVELGAME");
-    levelGame.position(windowWidth/2.5,windowHeight/2);
+    levelGame.position(width/2.5,height/2);
     
 
     //create slider
     slider = createSlider(0,10,0.5,0.01);
-    slider.position(windowWidth/10, windowHeight/1.06);
+    slider.position(width/10, height/1.06);
 
     //alert for high volume
     alertBox = alert("Please Unplug Headsets and Make sure your volume is loo. Too high volume can harm you ears")
@@ -184,7 +184,7 @@ function setup() {
     //change depth
 
     //starScore
-    showingStar = createSprite(windowWidth/1.7,(windowHeight/15.5));
+    showingStar = createSprite(width/1.7,(height/15.5));
     showingStar.addImage(showingstarImg);
     showingStar.scale = 0.2;
 
@@ -369,8 +369,8 @@ player.velocityY = player.velocityY + 0.6;
  
  
             //Jump 
-            if(( touches.length>0  && player.y >= windowHeight/2+150) ||
-             ( keyDown("space") && player.y >= windowHeight/2+150)) 
+            if(( touches.length>0  && player.y >= height/2+150) ||
+             ( keyDown("space") && player.y >= height/2+150)) 
              {
             player.velocityY = -14.5;
             touches = []
@@ -390,11 +390,11 @@ player.velocityY = player.velocityY + 0.6;
             }
  
              //player velocity should no more than 0
-             if(player.velocityX < 0 || player.velocityX > 0 || player.x < windowWidth/6 ||
-                 player.x > windowWidth/6) 
+             if(player.velocityX < 0 || player.velocityX > 0 || player.x < width/6 ||
+                 player.x > width/6) 
                  {
                 player.velocityX = 0;
-                player.x = windowWidth/6;
+                player.x = width/6;
                  }
    
              //star group
@@ -486,8 +486,8 @@ player.velocityY = player.velocityY + 0.6;
 
 
            //Jump 
-           if(( touches.length>0  && player.y >= windowHeight/2+150) ||
-            ( keyDown("space") && player.y >= windowHeight/2+150)) 
+           if(( touches.length>0  && player.y >= height/2+150) ||
+            ( keyDown("space") && player.y >= height/2+150)) 
             {
            player.velocityY = -14.5;
            touches = []
@@ -507,11 +507,11 @@ player.velocityY = player.velocityY + 0.6;
             }
 
             //player velocity should no more than 0
-            if(player.velocityX < 0 || player.velocityX > 0 || player.x < windowWidth/6 ||
-                player.x > windowWidth/6) 
+            if(player.velocityX < 0 || player.velocityX > 0 || player.x < width/6 ||
+                player.x > width/6) 
                 {
                     player.velocityX = 0;
-                    player.x = windowWidth/6;
+                    player.x = width/6;
                 }
   
             //star group
@@ -706,17 +706,17 @@ player.velocityY = player.velocityY + 0.6;
        stroke("red");
        textSize(25);
        fill("yellow");
-       text("Score: " + score, windowWidth-180,(windowHeight/10.5));
+       text("Score: " + score, width-180,(height/10.5));
 
        stroke("purple");
        textSize(25);
        fill("orange");
-       text("Points: " + points, windowWidth-300,(windowHeight/10.5));
+       text("Points: " + points, width-300,(height/10.5));
 
        stroke("white");
        textSize(25);
        fill("black");
-       text("HI: " + highestScore, windowWidth-440,(windowHeight/10.5));
+       text("HI: " + highestScore, width-440,(height/10.5));
 
     } 
     else 
@@ -724,17 +724,17 @@ player.velocityY = player.velocityY + 0.6;
        stroke("red");
        textSize(35);
        fill("yellow");
-       text("Score: " + score, windowWidth/2-100,(windowHeight/3));
+       text("Score: " + score, width/2-100,(height/3));
 
        stroke("purple");
        textSize(35);
        fill("orange");
-       text("Points: " + points, windowWidth/2+200,(windowHeight/3));
+       text("Points: " + points, width/2+200,(height/3));
 
        stroke("white");
        textSize(35);
        fill("black");
-       text("HI: " + highestScore, windowWidth/2-300,(windowHeight/3));
+       text("HI: " + highestScore, width/2-300,(height/3));
     }
 
     if(gameState == "levelEnd") 
@@ -754,26 +754,26 @@ player.velocityY = player.velocityY + 0.6;
         text(starScore, showingStar.x+2, showingStar.y+14);
 
        textAlign(CENTER);
-       text("© Dynamic Coders",windowWidth/2,(windowHeight));
+       text("© Dynamic Coders",width/2,(height));
        
        
        
        timeZone();
-       text("Time: " + take, player.x/2, windowHeight/10.5);
+       text("Time: " + take, player.x/2, height/10.5);
 }
 
  function spawnEnimies() {
 
     if(frameCount % 300 === 0) 
     {
-        zubat = createSprite(windowWidth+100, windowHeight/2+50);
+        zubat = createSprite(width+100, height/2+50);
         zubat.y = Math.round(random(350, 550));
         zubat.addAnimation("flying", zubat_flying);
         zubat.addAnimation("stop",zubat_stop);
         zubat.debug = false;
         zubat.scale = 0.25;
         zubat.velocityX = -(7 + score/100);
-        zubat.lifetime = windowWidth+10;
+        zubat.lifetime = width+10;
 
         zubatGroup.add(zubat);
         zubatGroup.setVelocityXEach(zubat.velocityX);
@@ -785,11 +785,11 @@ player.velocityY = player.velocityY + 0.6;
 
     if(frameCount % 225 === 0) 
     {
-        enemy1 = createSprite(windowWidth+100,invisibleGround.y-30);
+        enemy1 = createSprite(width+100,invisibleGround.y-30);
         enemy1.addImage("moving", enemy_moving);
         enemy1.scale = 0.80;
         enemy1.velocityX = -(7 + score/100);
-        enemy1.lifetime = windowWidth+10;
+        enemy1.lifetime = width+10;
         enemy1.setCollider("rectangle",0,0,150,150)
         enemy1.debug = false;
         enemy1Group.add(enemy1);
@@ -812,12 +812,12 @@ function spawnFace() {
 
     if(frameCount % 500 === 0) 
     {
-        let face = createSprite(windowWidth+100, windowHeight/2+50);
+        let face = createSprite(width+100, height/2+50);
         face.y = Math.round(random(350, 550));
         face.addImage(face_image);
         face.scale = 0.1;
         face.velocityX = -(7 + score/100);
-        face.lifetime = windowWidth+10;
+        face.lifetime = width+10;
         pointsGroup.add(face);
 
         face.depth = player.depth;
@@ -832,10 +832,10 @@ function spawnFace() {
 function blocks() {
     if(frameCount%5000===0) 
     {
-        block = createSprite(windowWidth+100,windowHeight/2+100,200,10);
+        block = createSprite(width+100,height/2+100,200,10);
         block.shapeColor = "black";
         block.velocityX = -15;
-        block.lifetime = windowWidth+10;
+        block.lifetime = width+10;
         blockGroup.add(block);
         
       
@@ -847,10 +847,10 @@ function blocks() {
 function stars() {
     if(frameCount%5000===0) 
     {
-        star = createSprite(windowWidth+100,windowHeight/2+75);
+        star = createSprite(width+100,height/2+75);
         star.addImage(playingstarImg);
         star.depth = player.depth+1;
-        star.lifetime = windowWidth+10;
+        star.lifetime = width+10;
         star.velocityX = -15;
         star.scale = 0.1;
         starsGroup.add(star);
