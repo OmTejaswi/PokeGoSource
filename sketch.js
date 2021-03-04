@@ -31,6 +31,8 @@ let selectSound;
 let serveStageSound;
 let pikaTired, pikaHappy, pikachuSound, pikaa, collect, attackSound;
 
+let checkBox;
+
 //gameState
 let gameState = "select";
 
@@ -172,6 +174,8 @@ function setup() {
 
     levelGame = createButton("LEVELGAME");
     levelGame.position(width/2.5,height/2);
+
+    checkBox = createCheckbox("Set Background According To Time",false).position(width/1.3,height/30);
     
 
     //create slider
@@ -242,7 +246,13 @@ function draw() {
     } 
 
     //change Background
-    backGroundtime();
+    if(checkBox.checked()) {
+        backGroundtime();
+    } else {
+        runningBack1.changeImage("day",runningBack1);
+        runningBack1.scale = 1;
+        backgroundReset = 1;
+    }
     
 
     //Highest score
