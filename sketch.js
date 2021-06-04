@@ -1,8 +1,8 @@
 /*  Note PokeGo Game is the copy
-    right of © Dynamic Coders
+    right of © Om Tejaswi
     please don't copy the codes.
 
-    © Dynamic Coders All rights reserved */
+    © Om Tejaswi All rights reserved */
 
 
 //player
@@ -764,7 +764,7 @@ player.velocityY = player.velocityY + 0.6;
         text(starScore, showingStar.x+2, showingStar.y+14);
 
        textAlign(CENTER);
-       text("© Dynamic Coders",width/2,(height));
+       text("© Om Tejaswi",width/2,(height));
        
        
        
